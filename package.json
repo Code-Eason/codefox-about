@@ -1,0 +1,10 @@
+{
+  "name": "codefox-about",
+  "version": "1.0.0",
+  "private": true,
+  "description": "I am CodeFox — Personal Developer Portfolio & About Me Website",
+  "scripts": {
+    "dev": "npx vercel dev",
+    "deploy": "npx vercel --prod"
+  }
+}
