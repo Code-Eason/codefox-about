@@ -132,7 +132,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(56,189,248,.12);pad
         <div><span class="ck">const</span> developer = {</div>
         <div>&nbsp;&nbsp;name: <span class="cs">"CodeFox"</span>,</div>
         <div>&nbsp;&nbsp;focus: [<span class="cs">"Full-Stack"</span>, <span class="cs">"Serverless"</span>, <span class="cs">"WebGL"</span>],</div>
-        <div>&nbsp;&nbsp;projects: <span class="cn">2</span>,</div>
+        <div>&nbsp;&nbsp;projects: <span class="cn">3</span>,</div>
         <div>&nbsp;&nbsp;status: <span class="cs">"Building cool things"</span></div>
         <div>};</div>
       </div>
@@ -202,6 +202,14 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(56,189,248,.12);pad
         <ul class="plist"><li>Real-time 60fps HTML5 Canvas physics</li><li>Interactive grid editor + 1-click playtest</li><li>Zero external dependencies</li></ul>
         <div class="tags"><span class="tag">HTML5 Canvas</span><span class="tag">Custom Physics</span><span class="tag">Vanilla JS</span></div>
       </article>
+      <article class="card">
+        <div class="phead"><span style="font-size:1.5rem">✈️</span><span class="pbadge">3D Simulation</span></div>
+        <h3 style="margin-bottom:8px;font-family:'Space Grotesk',sans-serif;font-size:1.35rem">Flight Simulator</h3>
+        <p>Browser-based 3D flight simulator with realistic physics, terrain rendering, and smooth controls — all running in-browser on Vercel.</p>
+        <ul class="plist"><li>Real-time 3D rendering &amp; flight physics</li><li>Keyboard &amp; mouse flight controls</li><li>Deployed on Vercel Edge</li></ul>
+        <div class="tags"><span class="tag">WebGL / 3D</span><span class="tag">Flight Physics</span><span class="tag">Vercel</span></div>
+        <a href="https://codefox-flight-sim.vercel.app" target="_blank" rel="noopener" class="btn-s" style="margin-top:16px;display:inline-flex">Play Now ↗</a>
+      </article>
     </div>
   </section>
   <section id="connect">
@@ -235,8 +243,7 @@ const out=document.getElementById("term-output"),inp=document.getElementById("te
 const CMDS={
   help:()=>"Commands: whoami, projects, skills, discord, clear",
   whoami:()=>"💠 I am CodeFox! Full-stack builder, serverless proxy architect & WebGL creator.",
-  projects:()=>"1. ⚡ Paradox Web Hub (3,718+ games + proxy browser)
-2. 🎮 Geometry Dash Level Editor",
+  projects:()=>"1. ⚡ Paradox Web Hub (3,718+ games + proxy browser)\n2. 🎮 Geometry Dash Level Editor\n3. ✈️ Flight Simulator (3D browser flight sim)",
   skills:()=>"Frontend: HTML5, CSS3, JS, Canvas, WebGL | Backend: Node.js, Vercel Functions, Python",
   discord:()=>{copyDiscord();return "💬 Discord: hypothesiz (copied!)";}
 };
