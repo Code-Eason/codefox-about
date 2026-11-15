@@ -6,8 +6,6 @@
 <title>I am CodeFox — Developer &amp; Builder</title>
 <meta name="description" content="I am CodeFox — Full-stack web developer, creative systems builder, and creator of Paradox Web Hub &amp; Geometry Dash Level Editor." />
 <meta name="theme-color" content="#040914" />
-<link id="fav-icon" rel="icon" type="image/png" />
-<link id="apple-icon" rel="apple-touch-icon" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
@@ -21,9 +19,9 @@ body{font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(-
 .o1{width:540px;height:540px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(0,229,255,.3),transparent 70%)}
 .o2{width:500px;height:500px;bottom:-130px;left:-120px;background:radial-gradient(circle,rgba(37,99,235,.28),transparent 70%)}
 header{position:sticky;top:16px;z-index:50;padding:0 20px;margin-top:16px}
-.nav-bar{max-width:1080px;margin:0 auto;padding:10px 20px;border-radius:999px;background:rgba(6,13,26,.84);backdrop-filter:blur(16px);border:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 10px 32px rgba(0,0,0,.55)}
-.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--txt);font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.1rem}
-.brand-avatar{width:34px;height:34px;border-radius:10px;object-fit:cover;border:1.5px solid rgba(0,229,255,.7);box-shadow:0 0 14px rgba(0,229,255,.45)}
+.nav-bar{max-width:1080px;margin:0 auto;padding:12px 22px;border-radius:999px;background:rgba(6,13,26,.84);backdrop-filter:blur(16px);border:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 10px 32px rgba(0,0,0,.55)}
+.brand{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--txt);font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.02em}
+.brand-code{font-family:"JetBrains Mono",monospace;color:var(--cyan);font-size:.95rem}
 .brand b{color:var(--cyan)}
 .nav-links{display:flex;gap:6px;list-style:none}
 .nav-links a{color:var(--sub);text-decoration:none;font-size:.9rem;font-weight:500;padding:7px 14px;border-radius:999px;transition:.2s}
@@ -31,10 +29,10 @@ header{position:sticky;top:16px;z-index:50;padding:0 20px;margin-top:16px}
 .nav-cta{padding:8px 16px;border-radius:999px;font-size:.86rem;font-weight:700;color:#031120;background:linear-gradient(135deg,var(--ice),var(--cyan),var(--blue));border:none;cursor:pointer;box-shadow:0 4px 18px rgba(0,229,255,.35)}
 main{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px 96px}
 section{padding-top:84px}
-.hero{padding-top:60px;display:grid;grid-template-columns:1.18fr .92fr;gap:44px;align-items:center}
+.hero{padding-top:64px;display:grid;grid-template-columns:1.2fr .88fr;gap:44px;align-items:center}
 .pill{display:inline-flex;align-items:center;gap:9px;padding:6px 14px;border-radius:999px;background:rgba(0,229,255,.09);border:1px solid rgba(0,229,255,.3);color:var(--cyan);font-family:"JetBrains Mono",monospace;font-size:.78rem;margin-bottom:20px}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
-.hero h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.8rem,6vw,4.5rem);line-height:1.06;letter-spacing:-.03em;margin-bottom:18px}
+.hero h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.9rem,6vw,4.6rem);line-height:1.06;letter-spacing:-.03em;margin-bottom:18px}
 .grad{background:linear-gradient(125deg,#e0f7ff,var(--cyan) 42%,var(--blue) 78%,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lead{font-size:1.12rem;color:var(--sub);max-width:580px;margin-bottom:28px}
 .lead strong{color:var(--txt)}
@@ -45,10 +43,11 @@ section{padding-top:84px}
 .sv{font-family:"Space Grotesk",sans-serif;font-size:1.55rem;font-weight:700;display:block}
 .sv span{color:var(--cyan)}
 .sl{font-size:.8rem;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
-.fox-card{position:relative;border-radius:22px;background:linear-gradient(165deg,rgba(11,27,52,.92),rgba(5,11,23,.97));border:1px solid rgba(0,229,255,.34);padding:20px;box-shadow:0 22px 65px -12px rgba(0,200,255,.28);transition:transform .2s ease-out}
-.fox-frame{width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid rgba(0,229,255,.4);box-shadow:0 14px 36px rgba(0,0,0,.65),0 0 32px rgba(0,229,255,.22)}
-.fox-img{width:100%;height:100%;object-fit:cover;display:block}
-.id-box{margin-top:16px;background:rgba(4,9,20,.8);border:1px solid rgba(56,189,248,.16);border-radius:14px;padding:12px 16px;font-family:"JetBrains Mono",monospace;font-size:.8rem}
+.code-card{border-radius:22px;background:linear-gradient(165deg,rgba(11,27,52,.92),rgba(5,11,23,.97));border:1px solid rgba(0,229,255,.34);overflow:hidden;box-shadow:0 22px 65px -12px rgba(0,200,255,.25)}
+.code-top{background:rgba(56,189,248,.07);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(56,189,248,.14);font-family:"JetBrains Mono",monospace;font-size:.76rem;color:var(--mut)}
+.code-body{padding:22px 24px;font-family:"JetBrains Mono",monospace;font-size:.85rem;line-height:1.8;color:#cbd5e1}
+.ck{color:#7dd3fc}.cs{color:#67e8f9}.cn{color:#38bdf8}.cm{color:#5c7396}
+.id-box{margin:0 20px 20px;background:rgba(4,9,20,.8);border:1px solid rgba(56,189,248,.16);border-radius:14px;padding:12px 16px;font-family:"JetBrains Mono",monospace;font-size:.8rem}
 .id-r{display:flex;justify-content:space-between;padding:4px 0}
 .id-r span:first-child{color:var(--mut)}
 .id-r a{color:var(--txt);text-decoration:none}
@@ -94,7 +93,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(56,189,248,.12);pad
 <header>
   <nav class="nav-bar">
     <a href="#top" class="brand">
-      <img id="nav-fox-icon" alt="CodeFox Blue Spirit Fox Icon" class="brand-avatar" />
+      <span class="brand-code">&lt;/&gt;</span>
       <span>Code<b>Fox</b></span>
     </a>
     <ul class="nav-links">
@@ -109,7 +108,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(56,189,248,.12);pad
 <main id="top">
   <section class="hero">
     <div>
-      <div class="pill"><span class="dot"></span><span>BLUE SPIRIT FOX // BUILDING ON THE EDGE</span></div>
+      <div class="pill"><span class="dot"></span><span>DEVELOPER // BUILDING ON THE EDGE</span></div>
       <h1>Hey there —<br /><span class="grad">I am CodeFox.</span></h1>
       <p class="lead">Full-stack developer, creative web engineer, and interactive tooling builder. I craft <strong>high-speed serverless web apps</strong>, custom proxy browsers, and zero-lag <strong>HTML5 &amp; WebGL game experiences</strong>.</p>
       <div class="actions">
@@ -122,12 +121,23 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(56,189,248,.12);pad
         <div><span class="sv">Edge<span>⚡</span></span><span class="sl">Vercel Deployed</span></div>
       </div>
     </div>
-    <div class="fox-card" id="fox-card">
-      <div class="fox-frame">
-        <img id="hero-fox-img" alt="CodeFox Mystic Blue Spirit-Fire Fox" class="fox-img" />
+    <div class="code-card">
+      <div class="code-top">
+        <div class="dots"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i></div>
+        <span>codefox.profile.ts</span>
+        <span></span>
+      </div>
+      <div class="code-body">
+        <div><span class="cm">// Developer Profile</span></div>
+        <div><span class="ck">const</span> developer = {</div>
+        <div>&nbsp;&nbsp;name: <span class="cs">"CodeFox"</span>,</div>
+        <div>&nbsp;&nbsp;focus: [<span class="cs">"Full-Stack"</span>, <span class="cs">"Serverless"</span>, <span class="cs">"WebGL"</span>],</div>
+        <div>&nbsp;&nbsp;projects: <span class="cn">2</span>,</div>
+        <div>&nbsp;&nbsp;status: <span class="cs">"Building cool things"</span></div>
+        <div>};</div>
       </div>
       <div class="id-box">
-        <div class="id-r"><span>IDENTITY</span><span style="color:var(--ice)">CodeFox</span></div>
+        <div class="id-r"><span>IDENTITY</span><span style="color:var(--ice)">I am CodeFox</span></div>
         <div class="id-r"><span>GITHUB</span><a href="https://github.com/Code-Eason" target="_blank" rel="noopener">@Code-Eason ↗</a></div>
         <div class="id-r"><span>DISCORD</span><span style="color:var(--cyan)">@hypothesiz</span></div>
       </div>
@@ -153,14 +163,13 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(56,189,248,.12);pad
         </div>
         <form class="tf" id="term-form" autocomplete="off">
           <span class="tp">codefox@web:~$</span>
-          <input type="text" id="term-input" class="ti" placeholder="Type help, projects, skills, discord, fox..." />
+          <input type="text" id="term-input" class="ti" placeholder="Type help, projects, skills, discord..." />
         </form>
         <div class="chips">
           <button type="button" class="chip" onclick="runCmd('whoami')">whoami</button>
           <button type="button" class="chip" onclick="runCmd('projects')">projects</button>
           <button type="button" class="chip" onclick="runCmd('skills')">skills</button>
           <button type="button" class="chip" onclick="runCmd('discord')">discord</button>
-          <button type="button" class="chip" onclick="runCmd('fox')">fox</button>
           <button type="button" class="chip" onclick="runCmd('clear')">clear</button>
         </div>
       </div>
@@ -182,7 +191,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(56,189,248,.12);pad
       <article class="card">
         <div class="phead"><span style="font-size:1.5rem">⚡</span><span class="pbadge">Full-Stack Web Hub</span></div>
         <h3 style="margin-bottom:8px;font-family:'Space Grotesk',sans-serif;font-size:1.35rem">Paradox Web Hub</h3>
-        <p>Full-stack web hub featuring a spirit-fox UI, built-in Multi-Tab Serverless Proxy Browser, custom Paradox Search, and 3,718+ playable HTML5/WebGL games.</p>
+        <p>Full-stack web hub featuring a dark UI, built-in Multi-Tab Serverless Proxy Browser, custom Paradox Search, and 3,718+ playable HTML5/WebGL games.</p>
         <ul class="plist"><li>Multi-tab proxy browser on Vercel Serverless</li><li>Built-in search &amp; frame header rewriting</li><li>Stealth launcher &amp; SPA routing</li></ul>
         <div class="tags"><span class="tag">Node.js</span><span class="tag">Vercel Serverless</span><span class="tag">3,718+ Games</span></div>
       </article>
@@ -215,23 +224,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(56,189,248,.12);pad
 </main>
 <footer>Crafted by <strong style="color:var(--cyan)">CodeFox</strong> (<code>@hypothesiz</code>) • Deployed on <strong style="color:var(--cyan)">Vercel</strong></footer>
 <div id="toast" class="toast">✔ Copied Discord username: <strong>hypothesiz</strong></div>
-<script src="/fox-data.js"></script>
 <script>
-(function initFox(){
-  const d=window.FOX_DATA;
-  if(!d)return;
-  document.getElementById("nav-fox-icon").src=d;
-  document.getElementById("hero-fox-img").src=d;
-  document.getElementById("apple-icon").href=d;
-  const im=new Image();
-  im.onload=function(){
-    const s=Math.min(im.width,im.height),c=document.createElement("canvas");
-    c.width=64;c.height=64;
-    c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,64,64);
-    document.getElementById("fav-icon").href=c.toDataURL("image/png");
-  };
-  im.src=d;
-})();
 let tmr=null;
 function copyDiscord(){
   if(navigator.clipboard)navigator.clipboard.writeText("hypothesiz").catch(()=>{});
@@ -240,12 +233,12 @@ function copyDiscord(){
 }
 const out=document.getElementById("term-output"),inp=document.getElementById("term-input");
 const CMDS={
-  help:()=>"Commands: whoami, projects, skills, discord, fox, clear",
+  help:()=>"Commands: whoami, projects, skills, discord, clear",
   whoami:()=>"💠 I am CodeFox! Full-stack builder, serverless proxy architect & WebGL creator.",
-  projects:()=>"1. ⚡ Paradox Web Hub (3,718+ games + proxy browser)\n2. 🎮 Geometry Dash Level Editor",
+  projects:()=>"1. ⚡ Paradox Web Hub (3,718+ games + proxy browser)
+2. 🎮 Geometry Dash Level Editor",
   skills:()=>"Frontend: HTML5, CSS3, JS, Canvas, WebGL | Backend: Node.js, Vercel Functions, Python",
-  discord:()=>{copyDiscord();return "💬 Discord: hypothesiz (copied!)";},
-  fox:()=>"  /\\  /\\\n //\\_//\\   💠 I am CodeFox\n \\_    _/   Discord: @hypothesiz\n  / * * \\\n  \\_\\O/_/"
+  discord:()=>{copyDiscord();return "💬 Discord: hypothesiz (copied!)";}
 };
 function addL(txt,cmd){
   const d=document.createElement("div");d.className="tl";
