@@ -1,594 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I am CodeFox — Developer &amp; Builder</title>
-  <meta name="description" content="I am CodeFox — Full-stack web developer, creative systems builder, and creator of Paradox Web Hub & Geometry Dash Level Editor." />
-  <meta name="theme-color" content="#040914" />
-  <meta property="og:title" content="I am CodeFox — Developer & Builder" />
-  <meta property="og:description" content="Full-stack web developer, serverless systems engineer, and interactive WebGL/HTML5 creator." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/fox.jpg" />
-  <link id="fav-icon" rel="icon" type="image/png" />
-  <script src="/fox-data.js"></script>
-  <link id="apple-icon" rel="apple-touch-icon" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <style>
-:root{--bg:#040914;--bg-elevated:rgba(9,19,36,0.76);--bg-card:rgba(10,22,42,0.78);--bg-card-hover:rgba(14,30,56,0.92);--border:rgba(56,189,248,0.18);--border-strong:rgba(0,229,255,0.48);--text:#f0f9ff;--text-secondary:#94a9c9;--text-muted:#5c7396;--spirit-ice:#bae6fd;--spirit-cyan:#00e5ff;--spirit-blue:#38bdf8;--spirit-royal:#0284c7;--spirit-deep:#1d4ed8;--emerald:#34d399;--discord:#5865f2;--radius-lg:22px;--radius-md:14px;--shadow-glow:0 22px 65px -12px rgba(0,200,255,0.26);}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;background-color:var(--bg);color:var(--text);}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background-color:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;min-height:100vh;position:relative;}
-#ember-canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none;}
-.ambient-orb{position:fixed;border-radius:50%;filter:blur(115px);pointer-events:none;z-index:0;opacity:0.5;}
-.orb-1{width:540px;height:540px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(0,229,255,0.3) 0%,rgba(2,132,199,0.12) 45%,transparent 70%);}
-.orb-2{width:500px;height:500px;bottom:-130px;left:-120px;background:radial-gradient(circle,rgba(37,99,235,0.28) 0%,rgba(56,189,248,0.1) 45%,transparent 70%);}
-.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(to right,rgba(125,211,252,0.028) 1px,transparent 1px),linear-gradient(to bottom,rgba(125,211,252,0.028) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 65% at 50% 25%,#000 35%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 65% at 50% 25%,#000 35%,transparent 100%);pointer-events:none;z-index:0;}
-header{position:sticky;top:16px;z-index:50;padding:0 20px;margin-top:16px;}
-.nav-bar{max-width:1080px;margin:0 auto;padding:10px 20px;border-radius:999px;background:rgba(6,13,26,0.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(56,189,248,0.18);display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 10px 32px rgba(0,0,0,0.55);}
-.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--text);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-0.02em;}
-.brand-avatar{width:34px;height:34px;border-radius:10px;object-fit:cover;border:1.5px solid rgba(0,229,255,0.65);box-shadow:0 0 14px rgba(0,229,255,0.42);transition:transform 0.25s ease,box-shadow 0.25s ease;}
-.brand:hover .brand-avatar{transform:scale(1.08) rotate(-4deg);box-shadow:0 0 22px rgba(0,229,255,0.72);}
-.brand span span{color:var(--spirit-cyan);}
-.nav-links{display:flex;align-items:center;gap:6px;list-style:none;}
-.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.9rem;font-weight:500;padding:7px 14px;border-radius:999px;transition:color 0.2s ease,background 0.2s ease;}
-.nav-links a:hover{color:var(--text);background:rgba(56,189,248,0.1);}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-size:0.86rem;font-weight:700;color:#031120;background:linear-gradient(135deg,var(--spirit-ice) 0%,var(--spirit-cyan) 50%,var(--spirit-blue) 100%);border:none;cursor:pointer;text-decoration:none;transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 4px 18px rgba(0,229,255,0.35);}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 26px rgba(0,229,255,0.6);}
-main{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px 96px;}
-section{padding-top:88px;}
-.hero{padding-top:64px;display:grid;grid-template-columns:1.18fr 0.92fr;gap:46px;align-items:center;}
-.status-pill{display:inline-flex;align-items:center;gap:9px;padding:6px 14px;border-radius:999px;background:rgba(0,229,255,0.09);border:1px solid rgba(0,229,255,0.3);color:var(--spirit-cyan);font-family:'JetBrains Mono',monospace;font-size:0.78rem;font-weight:500;margin-bottom:22px;}
-.status-dot{width:8px;height:8px;border-radius:50%;background:var(--spirit-cyan);box-shadow:0 0 12px var(--spirit-cyan);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1;}
-50%{transform:scale(1.35);opacity:0.65;}
-}
-.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,6vw,4.6rem);line-height:1.06;letter-spacing:-0.03em;margin-bottom:20px;}
-.gradient-fox{background:linear-gradient(125deg,#e0f7ff 0%,var(--spirit-cyan) 40%,var(--spirit-blue) 75%,#60a5fa 100%);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;filter:drop-shadow(0 0 24px rgba(0,229,255,0.22));}
-.hero-lead{font-size:1.14rem;color:var(--text-secondary);max-width:580px;margin-bottom:30px;}
-.hero-lead strong{color:var(--text);font-weight:600;}
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px;}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:12px;background:linear-gradient(135deg,var(--spirit-cyan) 0%,var(--spirit-royal) 100%);color:#03101f;font-weight:700;font-size:0.96rem;text-decoration:none;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(0,229,255,0.34);transition:transform 0.2s ease,box-shadow 0.2s ease;}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(0,229,255,0.55);}
-.btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:12px;background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.22);color:var(--text);font-weight:600;font-size:0.95rem;text-decoration:none;cursor:pointer;transition:background 0.2s ease,border-color 0.2s ease,transform 0.2s ease;}
-.btn-secondary:hover{background:rgba(56,189,248,0.13);border-color:var(--border-strong);transform:translateY(-2px);}
-.hero-stats{display:flex;flex-wrap:wrap;gap:28px;padding-top:22px;border-top:1px solid rgba(56,189,248,0.12);}
-.stat-item{display:flex;flex-direction:column;}
-.stat-value{font-family:'Space Grotesk',sans-serif;font-size:1.55rem;font-weight:700;color:var(--text);}
-.stat-value span{color:var(--spirit-cyan);}
-.stat-label{font-size:0.82rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;}
-.fox-emblem-card{position:relative;border-radius:var(--radius-lg);background:linear-gradient(165deg,rgba(11,27,52,0.9) 0%,rgba(5,11,23,0.96) 100%);border:1px solid rgba(0,229,255,0.3);padding:20px;display:flex;flex-direction:column;align-items:center;box-shadow:var(--shadow-glow);transition:transform 0.2s ease-out,border-color 0.3s ease,box-shadow 0.3s ease;overflow:hidden;}
-.fox-emblem-card:hover{border-color:var(--spirit-cyan);box-shadow:0 26px 75px -10px rgba(0,229,255,0.38);}
-.fox-halo{position:absolute;width:300px;height:300px;top:12px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,0.34) 0%,rgba(2,132,199,0.14) 52%,transparent 74%);filter:blur(22px);pointer-events:none;}
-.fox-image-frame{position:relative;z-index:1;width:100%;aspect-ratio:4 / 3;border-radius:16px;overflow:hidden;border:1px solid rgba(0,229,255,0.35);box-shadow:0 14px 36px rgba(0,0,0,0.65),0 0 32px rgba(0,229,255,0.2);animation:floatFox 5.5s ease-in-out infinite;}
-.fox-hero-img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);transition:transform 0.5s ease;}
-.fox-emblem-card:hover .fox-hero-img{transform:scale(1.06);}
-@keyframes floatFox{0%,100%{transform:translateY(0px);}
-50%{transform:translateY(-6px);}
-}
-.id-badge{margin-top:16px;width:100%;background:rgba(4,9,20,0.78);border:1px solid rgba(56,189,248,0.14);border-radius:14px;padding:13px 16px;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--text-secondary);position:relative;z-index:1;}
-.id-row{display:flex;justify-content:space-between;padding:4px 0;}
-.id-row span:first-child{color:var(--text-muted);}
-.id-row span:last-child,.id-row a{color:var(--text);font-weight:500;text-decoration:none;}
-.id-row .cyan{color:var(--spirit-cyan);}
-.id-row .ice{color:var(--spirit-ice);}
-.section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--spirit-cyan);margin-bottom:8px;display:block;}
-.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.85rem,3.5vw,2.45rem);letter-spacing:-0.02em;margin-bottom:14px;}
-.section-subtitle{color:var(--text-secondary);max-width:640px;margin-bottom:36px;font-size:1.02rem;}
-.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:28px;align-items:stretch;}
-.glass-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:border-color 0.25s ease,transform 0.25s ease,background 0.25s ease;}
-.glass-card:hover{border-color:var(--border-strong);background:var(--bg-card-hover);}
-.about-copy p + p{margin-top:16px;}
-.about-copy p{color:var(--text-secondary);font-size:0.98rem;}
-.about-copy strong{color:var(--text);}
-.trait-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
-.trait-pill{font-family:'JetBrains Mono',monospace;font-size:0.78rem;padding:6px 12px;border-radius:8px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.26);color:var(--spirit-ice);}
-.terminal-window{background:#050b17;border:1px solid rgba(0,229,255,0.28);border-radius:var(--radius-lg);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 18px 48px rgba(0,0,0,0.6);}
-.terminal-header{background:rgba(56,189,248,0.05);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(56,189,248,0.12);}
-.term-dots{display:flex;gap:7px;}
-.term-dots span{width:11px;height:11px;border-radius:50%;}
-.dot-r{background:#ff5f56;}
-.dot-y{background:#ffbd2e;}
-.dot-g{background:#27c93f;}
-.term-title{font-family:'JetBrains Mono',monospace;font-size:0.76rem;color:var(--text-muted);}
-.term-body{padding:18px;font-family:'JetBrains Mono',monospace;font-size:0.83rem;line-height:1.6;height:265px;overflow-y:auto;color:#cbd5e1;}
-.term-line{margin-bottom:8px;white-space:pre-wrap;word-break:break-word;}
-.term-prompt{color:var(--spirit-blue);font-weight:700;}
-.term-cmd{color:var(--spirit-cyan);}
-.term-input-row{display:flex;align-items:center;gap:8px;padding:10px 18px 14px;border-top:1px solid rgba(56,189,248,0.1);background:rgba(56,189,248,0.02);}
-.term-input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:0.84rem;}
-.term-quick-btns{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px 14px;}
-.term-chip{font-family:'JetBrains Mono',monospace;font-size:0.72rem;padding:4px 9px;border-radius:6px;border:1px solid rgba(56,189,248,0.18);background:rgba(56,189,248,0.05);color:var(--text-secondary);cursor:pointer;transition:all 0.15s ease;}
-.term-chip:hover{border-color:var(--spirit-cyan);color:var(--spirit-cyan);}
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.skill-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-.skill-card p{color:var(--text-secondary);font-size:0.9rem;margin-bottom:18px;}
-.tag-list{display:flex;flex-wrap:wrap;gap:8px;}
-.tag{font-family:'JetBrains Mono',monospace;font-size:0.76rem;padding:5px 10px;border-radius:7px;background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.16);color:#e0f2fe;}
-.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-.project-card{position:relative;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;}
-.project-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--spirit-ice),var(--spirit-cyan),var(--spirit-royal));opacity:0.9;}
-.project-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
-.project-icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:1.35rem;background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.28);}
-.project-badge{font-family:'JetBrains Mono',monospace;font-size:0.73rem;padding:4px 10px;border-radius:999px;background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.3);color:var(--spirit-cyan);}
-.project-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.38rem;margin-bottom:10px;}
-.project-card p{color:var(--text-secondary);font-size:0.95rem;margin-bottom:20px;}
-.project-highlights{list-style:none;margin-bottom:22px;display:grid;gap:7px;}
-.project-highlights li{font-size:0.88rem;color:#cbd5e1;display:flex;align-items:center;gap:8px;}
-.project-highlights li::before{content:"▹";color:var(--spirit-cyan);font-weight:bold;}
-.connect-banner{background:linear-gradient(135deg,rgba(10,24,48,0.94) 0%,rgba(5,12,26,0.98) 100%);border:1px solid var(--border-strong);border-radius:var(--radius-lg);padding:42px;display:grid;grid-template-columns:1.2fr 0.9fr;gap:32px;align-items:center;box-shadow:var(--shadow-glow);}
-.connect-links{margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;}
-.discord-box{background:rgba(88,101,242,0.13);border:1px solid rgba(88,101,242,0.45);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;}
-.discord-header{display:flex;align-items:center;gap:14px;}
-.discord-logo{width:48px;height:48px;border-radius:14px;background:var(--discord);display:grid;place-items:center;color:#fff;flex-shrink:0;box-shadow:0 8px 20px rgba(88,101,242,0.4);}
-.discord-meta small{display:block;font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:#a5b4fc;text-transform:uppercase;letter-spacing:0.08em;}
-.discord-handle{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#ffffff;letter-spacing:-0.01em;}
-.discord-actions{display:flex;gap:10px;flex-wrap:wrap;}
-.btn-discord{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:10px;background:var(--discord);color:#ffffff;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;transition:transform 0.18s ease,filter 0.18s ease;}
-.btn-discord:hover{filter:brightness(1.12);transform:translateY(-1px);}
-.btn-discord-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:10px;background:rgba(56,189,248,0.07);border:1px solid rgba(56,189,248,0.22);color:var(--text);font-weight:600;font-size:0.88rem;text-decoration:none;transition:background 0.18s ease,border-color 0.18s ease;}
-.btn-discord-outline:hover{background:rgba(56,189,248,0.15);border-color:var(--spirit-cyan);}
-footer{position:relative;z-index:1;border-top:1px solid rgba(56,189,248,0.12);padding:28px 24px 40px;text-align:center;color:var(--text-muted);font-size:0.88rem;}
-footer strong{color:var(--spirit-cyan);}
-.toast{position:fixed;bottom:26px;right:26px;z-index:100;background:rgba(8,18,36,0.96);border:1px solid var(--spirit-cyan);color:var(--text);padding:12px 18px;border-radius:12px;font-size:0.88rem;font-weight:500;display:flex;align-items:center;gap:10px;box-shadow:0 12px 32px rgba(0,0,0,0.6);transform:translateY(90px);opacity:0;pointer-events:none;transition:transform 0.28s cubic-bezier(0.16,1,0.3,1),opacity 0.28s ease;}
-.toast.show{transform:translateY(0);opacity:1;}
-@media (max-width:900px){.hero,.about-grid,.connect-banner{grid-template-columns:1fr;}
-.skills-grid{grid-template-columns:1fr;}
-.projects-grid{grid-template-columns:1fr;}
-.nav-links{display:none;}
-.hero{padding-top:36px;}
-.connect-banner{padding:28px 22px;}
-}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I am CodeFox — Developer &amp; Builder</title>
+<meta name="description" content="I am CodeFox — Full-stack web developer, creative systems builder, and creator of Paradox Web Hub &amp; Geometry Dash Level Editor." />
+<meta name="theme-color" content="#040914" />
+<link id="fav-icon" rel="icon" type="image/png" />
+<link id="apple-icon" rel="apple-touch-icon" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#040914;--card:rgba(10,22,42,.8);--card-h:rgba(14,30,56,.94);--bd:rgba(56,189,248,.18);--bd-s:rgba(0,229,255,.5);--txt:#f0f9ff;--sub:#94a9c9;--mut:#5c7396;--ice:#bae6fd;--cyan:#00e5ff;--blue:#38bdf8;--roy:#0284c7;--disc:#5865f2}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg);color:var(--txt)}
+body{font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.65;overflow-x:hidden;min-height:100vh}
+#ember-canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.orb{position:fixed;border-radius:50%;filter:blur(115px);pointer-events:none;z-index:0;opacity:.5}
+.o1{width:540px;height:540px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(0,229,255,.3),transparent 70%)}
+.o2{width:500px;height:500px;bottom:-130px;left:-120px;background:radial-gradient(circle,rgba(37,99,235,.28),transparent 70%)}
+header{position:sticky;top:16px;z-index:50;padding:0 20px;margin-top:16px}
+.nav-bar{max-width:1080px;margin:0 auto;padding:10px 20px;border-radius:999px;background:rgba(6,13,26,.84);backdrop-filter:blur(16px);border:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 10px 32px rgba(0,0,0,.55)}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--txt);font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.1rem}
+.brand-avatar{width:34px;height:34px;border-radius:10px;object-fit:cover;border:1.5px solid rgba(0,229,255,.7);box-shadow:0 0 14px rgba(0,229,255,.45)}
+.brand b{color:var(--cyan)}
+.nav-links{display:flex;gap:6px;list-style:none}
+.nav-links a{color:var(--sub);text-decoration:none;font-size:.9rem;font-weight:500;padding:7px 14px;border-radius:999px;transition:.2s}
+.nav-links a:hover{color:var(--txt);background:rgba(56,189,248,.1)}
+.nav-cta{padding:8px 16px;border-radius:999px;font-size:.86rem;font-weight:700;color:#031120;background:linear-gradient(135deg,var(--ice),var(--cyan),var(--blue));border:none;cursor:pointer;box-shadow:0 4px 18px rgba(0,229,255,.35)}
+main{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px 96px}
+section{padding-top:84px}
+.hero{padding-top:60px;display:grid;grid-template-columns:1.18fr .92fr;gap:44px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:6px 14px;border-radius:999px;background:rgba(0,229,255,.09);border:1px solid rgba(0,229,255,.3);color:var(--cyan);font-family:"JetBrains Mono",monospace;font-size:.78rem;margin-bottom:20px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.hero h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.8rem,6vw,4.5rem);line-height:1.06;letter-spacing:-.03em;margin-bottom:18px}
+.grad{background:linear-gradient(125deg,#e0f7ff,var(--cyan) 42%,var(--blue) 78%,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.12rem;color:var(--sub);max-width:580px;margin-bottom:28px}
+.lead strong{color:var(--txt)}
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:32px}
+.btn-p{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--roy));color:#03101f;font-weight:700;text-decoration:none;border:none;cursor:pointer;box-shadow:0 10px 28px rgba(0,229,255,.34)}
+.btn-s{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:12px;background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.24);color:var(--txt);font-weight:600;text-decoration:none;cursor:pointer}
+.stats{display:flex;flex-wrap:wrap;gap:28px;padding-top:20px;border-top:1px solid rgba(56,189,248,.14)}
+.sv{font-family:"Space Grotesk",sans-serif;font-size:1.55rem;font-weight:700;display:block}
+.sv span{color:var(--cyan)}
+.sl{font-size:.8rem;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.fox-card{position:relative;border-radius:22px;background:linear-gradient(165deg,rgba(11,27,52,.92),rgba(5,11,23,.97));border:1px solid rgba(0,229,255,.34);padding:20px;box-shadow:0 22px 65px -12px rgba(0,200,255,.28);transition:transform .2s ease-out}
+.fox-frame{width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid rgba(0,229,255,.4);box-shadow:0 14px 36px rgba(0,0,0,.65),0 0 32px rgba(0,229,255,.22)}
+.fox-img{width:100%;height:100%;object-fit:cover;display:block}
+.id-box{margin-top:16px;background:rgba(4,9,20,.8);border:1px solid rgba(56,189,248,.16);border-radius:14px;padding:12px 16px;font-family:"JetBrains Mono",monospace;font-size:.8rem}
+.id-r{display:flex;justify-content:space-between;padding:4px 0}
+.id-r span:first-child{color:var(--mut)}
+.id-r a{color:var(--txt);text-decoration:none}
+.eye{font-family:"JetBrains Mono",monospace;font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cyan);display:block;margin-bottom:8px}
+.st{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.85rem,3.5vw,2.4rem);margin-bottom:12px}
+.ss{color:var(--sub);max-width:640px;margin-bottom:32px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:28px;backdrop-filter:blur(14px);transition:.25s}
+.card:hover{border-color:var(--bd-s);background:var(--card-h)}
+.card p{color:var(--sub);font-size:.95rem}
+.card p+p{margin-top:14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{font-family:"JetBrains Mono",monospace;font-size:.76rem;padding:5px 10px;border-radius:7px;background:rgba(0,229,255,.08);border:1px solid rgba(56,189,248,.2);color:#e0f2fe}
+.term{background:#050b17;border:1px solid rgba(0,229,255,.3);border-radius:22px;display:flex;flex-direction:column;overflow:hidden}
+.th{background:rgba(56,189,248,.06);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(56,189,248,.12);font-family:"JetBrains Mono",monospace;font-size:.76rem;color:var(--mut)}
+.dots{display:flex;gap:7px}.dots i{width:11px;height:11px;border-radius:50%;display:block}
+.tb{padding:16px;font-family:"JetBrains Mono",monospace;font-size:.82rem;height:230px;overflow-y:auto;color:#cbd5e1}
+.tl{margin-bottom:8px;white-space:pre-wrap}
+.tp{color:var(--blue);font-weight:700}.tc{color:var(--cyan)}
+.tf{display:flex;align-items:center;gap:8px;padding:10px 16px;border-top:1px solid rgba(56,189,248,.1)}
+.ti{flex:1;background:transparent;border:none;outline:none;color:var(--txt);font-family:"JetBrains Mono",monospace;font-size:.84rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 14px}
+.chip{font-family:"JetBrains Mono",monospace;font-size:.72rem;padding:4px 9px;border-radius:6px;border:1px solid rgba(56,189,248,.2);background:rgba(56,189,248,.05);color:var(--sub);cursor:pointer}
+.chip:hover{border-color:var(--cyan);color:var(--cyan)}
+.phead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.pbadge{font-family:"JetBrains Mono",monospace;font-size:.73rem;padding:4px 10px;border-radius:999px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.3);color:var(--cyan)}
+.plist{list-style:none;margin:16px 0;display:grid;gap:6px;font-size:.88rem;color:#cbd5e1}
+.plist li::before{content:"▹ ";color:var(--cyan);font-weight:700}
+.cban{background:linear-gradient(135deg,rgba(10,24,48,.94),rgba(5,12,26,.98));border:1px solid var(--bd-s);border-radius:22px;padding:38px;display:grid;grid-template-columns:1.2fr .9fr;gap:28px;align-items:center}
+.dbox{background:rgba(88,101,242,.14);border:1px solid rgba(88,101,242,.46);border-radius:18px;padding:22px;display:grid;gap:14px}
+.dhandle{font-family:"Space Grotesk",sans-serif;font-size:1.5rem;font-weight:700}
+.dbtn{padding:11px 18px;border-radius:10px;background:var(--disc);color:#fff;font-weight:600;border:none;cursor:pointer}
+footer{position:relative;z-index:1;border-top:1px solid rgba(56,189,248,.12);padding:28px 24px 40px;text-align:center;color:var(--mut);font-size:.88rem}
+.toast{position:fixed;bottom:24px;right:24px;z-index:100;background:rgba(8,18,36,.96);border:1px solid var(--cyan);padding:12px 18px;border-radius:12px;font-size:.88rem;transform:translateY(90px);opacity:0;transition:.28s}
+.toast.show{transform:translateY(0);opacity:1}
+@media(max-width:900px){.hero,.grid2,.grid3,.cban{grid-template-columns:1fr}.nav-links{display:none}}
 </style>
 </head>
 <body>
-  <canvas id="ember-canvas" aria-hidden="true"></canvas>
-  <div class="ambient-orb orb-1" aria-hidden="true"></div>
-  <div class="ambient-orb orb-2" aria-hidden="true"></div>
-  <div class="grid-overlay" aria-hidden="true"></div>
-  <header>
-  <nav class="nav-bar" aria-label="Primary Navigation">
-  <a href="#top" class="brand">
-  <img id="nav-fox-icon" src="" alt="CodeFox Blue Spirit Fox Icon" class="brand-avatar" />
-  <span>Code<span>Fox</span></span>
-  </a>
-  <ul class="nav-links">
-  <li><a href="#about">About</a></li>
-  <li><a href="#skills">Skills</a></li>
-  <li><a href="#projects">Projects</a></li>
-  <li><a href="#connect">Connect</a></li>
-  </ul>
-  <button type="button" class="nav-cta" onclick="copyDiscord()">
-  <span>@hypothesiz</span>
-  </button>
+<canvas id="ember-canvas" aria-hidden="true"></canvas>
+<div class="orb o1"></div><div class="orb o2"></div>
+<header>
+  <nav class="nav-bar">
+    <a href="#top" class="brand">
+      <img id="nav-fox-icon" alt="CodeFox Blue Spirit Fox Icon" class="brand-avatar" />
+      <span>Code<b>Fox</b></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <button type="button" class="nav-cta" onclick="copyDiscord()">@hypothesiz</button>
   </nav>
-  </header>
-  <main id="top">
-  
+</header>
+<main id="top">
   <section class="hero">
-  <div>
-  <div class="status-pill">
-  <span class="status-dot"></span>
-  <span>BLUE SPIRIT FOX // BUILDING ON THE EDGE</span>
-  </div>
-  <h1>
-  Hey there —<br />
-  <span class="gradient-fox">I am CodeFox.</span>
-  </h1>
-  <p class="hero-lead">
-  Full-stack developer, creative web engineer, and interactive tooling builder. I craft <strong>high-speed serverless web apps</strong>, custom proxy browsers, and zero-lag <strong>HTML5 &amp; WebGL game experiences</strong>.
-  </p>
-  <div class="hero-actions">
-  <a href="#projects" class="btn-primary">
-  <span>Explore My Builds</span>
-  <span aria-hidden="true">→</span>
-  </a>
-  <button type="button" class="btn-secondary" onclick="copyDiscord()">
-  <span>Discord: <strong>hypothesiz</strong></span>
-  </button>
-  </div>
-  <div class="hero-stats">
-  <div class="stat-item">
-  <span class="stat-value">3,718<span>+</span></span>
-  <span class="stat-label">Web Games Hub</span>
-  </div>
-  <div class="stat-item">
-  <span class="stat-value">60<span>fps</span></span>
-  <span class="stat-label">Canvas Physics</span>
-  </div>
-  <div class="stat-item">
-  <span class="stat-value">Edge<span>⚡</span></span>
-  <span class="stat-label">Vercel Deployed</span>
-  </div>
-  </div>
-  </div>
-  <div class="fox-emblem-card" id="fox-card">
-  <div class="fox-halo" aria-hidden="true"></div>
-  <div class="fox-image-frame">
-  <img
-  id="hero-fox-img" src=""
-  alt="CodeFox Mystic Blue Spirit-Fire Fox"
-  class="fox-hero-img"
-  />
-  </div>
-  <div class="id-badge">
-  <div class="id-row">
-  <span>IDENTITY</span>
-  <span class="ice">CodeFox</span>
-  </div>
-  <div class="id-row">
-  <span>GITHUB</span>
-  <a href="https://github.com/Code-Eason" target="_blank" rel="noopener noreferrer">@Code-Eason ↗</a>
-  </div>
-  <div class="id-row">
-  <span>DISCORD</span>
-  <span class="cyan">@hypothesiz</span>
-  </div>
-  </div>
-  </div>
+    <div>
+      <div class="pill"><span class="dot"></span><span>BLUE SPIRIT FOX // BUILDING ON THE EDGE</span></div>
+      <h1>Hey there —<br /><span class="grad">I am CodeFox.</span></h1>
+      <p class="lead">Full-stack developer, creative web engineer, and interactive tooling builder. I craft <strong>high-speed serverless web apps</strong>, custom proxy browsers, and zero-lag <strong>HTML5 &amp; WebGL game experiences</strong>.</p>
+      <div class="actions">
+        <a href="#projects" class="btn-p">Explore My Builds →</a>
+        <button type="button" class="btn-s" onclick="copyDiscord()">Discord: <strong>hypothesiz</strong></button>
+      </div>
+      <div class="stats">
+        <div><span class="sv">3,718<span>+</span></span><span class="sl">Web Games Hub</span></div>
+        <div><span class="sv">60<span>fps</span></span><span class="sl">Canvas Physics</span></div>
+        <div><span class="sv">Edge<span>⚡</span></span><span class="sl">Vercel Deployed</span></div>
+      </div>
+    </div>
+    <div class="fox-card" id="fox-card">
+      <div class="fox-frame">
+        <img id="hero-fox-img" alt="CodeFox Mystic Blue Spirit-Fire Fox" class="fox-img" />
+      </div>
+      <div class="id-box">
+        <div class="id-r"><span>IDENTITY</span><span style="color:var(--ice)">CodeFox</span></div>
+        <div class="id-r"><span>GITHUB</span><a href="https://github.com/Code-Eason" target="_blank" rel="noopener">@Code-Eason ↗</a></div>
+        <div class="id-r"><span>DISCORD</span><span style="color:var(--cyan)">@hypothesiz</span></div>
+      </div>
+    </div>
   </section>
-  
   <section id="about">
-  <span class="section-eyebrow">// 01. WHOAMI</span>
-  <h2 class="section-title">About CodeFox</h2>
-  <p class="section-subtitle">
-  Turning ambitious ideas into snappy, self-contained web platforms — from serverless browser proxies to custom physics editors.
-  </p>
-  <div class="about-grid">
-  <div class="glass-card about-copy">
-  <p>
-  Hi, <strong>I am CodeFox</strong>! I'm a developer obsessed with how far modern browsers can be pushed without heavy bloat. Whether it's architecting a multi-tab serverless proxy browser or writing a 60fps level editor from scratch, I love building things that feel instant and alive.
-  </p>
-  <p>
-  My work blends <strong>clean UI engineering</strong>, <strong>cloud edge functions</strong>, and <strong>interactive game tech</strong>. If an idea sounds tricky to run directly inside a browser tab, that's usually my cue to build it.
-  </p>
-  <div class="trait-pills">
-  <span class="trait-pill">🦊 I am CodeFox</span>
-  <span class="trait-pill">💠 Spirit-Blue Craft</span>
-  <span class="trait-pill">🌐 Serverless Edge</span>
-  <span class="trait-pill">🎮 HTML5 / WebGL</span>
-  </div>
-  </div>
-  <div class="terminal-window" aria-label="Interactive CodeFox Terminal">
-  <div class="terminal-header">
-  <div class="term-dots" aria-hidden="true">
-  <span class="dot-r"></span>
-  <span class="dot-y"></span>
-  <span class="dot-g"></span>
-  </div>
-  <span class="term-title">codefox@vercel-edge: ~</span>
-  <span style="width: 36px;"></span>
-  </div>
-  <div class="term-body" id="term-output">
-  <div class="term-line"><span class="term-prompt">codefox@web:~$</span> <span class="term-cmd">whoami</span></div>
-  <div class="term-line">💠 I am CodeFox — Full-Stack Builder, Proxy Architect &amp; Creative Coder.</div>
-  <div class="term-line" style="color: #94a9c9;">Type a command below or click a shortcut chip (`help`, `projects`, `skills`, `discord`, `fox`).</div>
-  </div>
-  <form class="term-input-row" id="term-form" autocomplete="off">
-  <span class="term-prompt">codefox@web:~$</span>
-  <input
-  type="text"
-  id="term-input"
-  class="term-input"
-  placeholder="Type a command (e.g. help)..."
-  aria-label="Terminal Command Input"
-  />
-  </form>
-  <div class="term-quick-btns">
-  <button type="button" class="term-chip" onclick="runTermCommand('whoami')">whoami</button>
-  <button type="button" class="term-chip" onclick="runTermCommand('projects')">projects</button>
-  <button type="button" class="term-chip" onclick="runTermCommand('skills')">skills</button>
-  <button type="button" class="term-chip" onclick="runTermCommand('discord')">discord</button>
-  <button type="button" class="term-chip" onclick="runTermCommand('fox')">fox</button>
-  <button type="button" class="term-chip" onclick="runTermCommand('clear')">clear</button>
-  </div>
-  </div>
-  </div>
+    <span class="eye">// 01. WHOAMI</span>
+    <h2 class="st">About CodeFox</h2>
+    <p class="ss">Turning ambitious ideas into snappy, self-contained web platforms — from serverless browser proxies to custom physics editors.</p>
+    <div class="grid2">
+      <div class="card">
+        <p>Hi, <strong>I am CodeFox</strong>! I am a developer obsessed with how far modern browsers can be pushed without heavy bloat. Whether it is architecting a multi-tab serverless proxy browser or writing a 60fps level editor from scratch, I love building things that feel instant and alive.</p>
+        <p>My work blends <strong>clean UI engineering</strong>, <strong>cloud edge functions</strong>, and <strong>interactive game tech</strong>.</p>
+        <div class="tags">
+          <span class="tag">💠 I am CodeFox</span><span class="tag">🌐 Serverless Edge</span><span class="tag">🎮 HTML5 / WebGL</span>
+        </div>
+      </div>
+      <div class="term">
+        <div class="th"><div class="dots"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i></div><span>codefox@vercel-edge: ~</span><span></span></div>
+        <div class="tb" id="term-output">
+          <div class="tl"><span class="tp">codefox@web:~$</span> <span class="tc">whoami</span></div>
+          <div class="tl">💠 I am CodeFox — Full-Stack Builder, Proxy Architect &amp; Creative Coder.</div>
+        </div>
+        <form class="tf" id="term-form" autocomplete="off">
+          <span class="tp">codefox@web:~$</span>
+          <input type="text" id="term-input" class="ti" placeholder="Type help, projects, skills, discord, fox..." />
+        </form>
+        <div class="chips">
+          <button type="button" class="chip" onclick="runCmd('whoami')">whoami</button>
+          <button type="button" class="chip" onclick="runCmd('projects')">projects</button>
+          <button type="button" class="chip" onclick="runCmd('skills')">skills</button>
+          <button type="button" class="chip" onclick="runCmd('discord')">discord</button>
+          <button type="button" class="chip" onclick="runCmd('fox')">fox</button>
+          <button type="button" class="chip" onclick="runCmd('clear')">clear</button>
+        </div>
+      </div>
+    </div>
   </section>
-  
   <section id="skills">
-  <span class="section-eyebrow">// 02. ARSENAL</span>
-  <h2 class="section-title">Skills &amp; Tech Stack</h2>
-  <p class="section-subtitle">
-  Focused on speed, clean architecture, and zero-friction deployment across frontend, backend, and browser engines.
-  </p>
-  <div class="skills-grid">
-  <div class="glass-card skill-card">
-  <h3><span>🎨</span> Frontend &amp; Creative</h3>
-  <p>Responsive interfaces, hardware-accelerated animations, and interactive canvas rendering.</p>
-  <div class="tag-list">
-  <span class="tag">HTML5</span>
-  <span class="tag">CSS3 / Glass UI</span>
-  <span class="tag">JavaScript (ES6+)</span>
-  <span class="tag">HTML5 Canvas</span>
-  <span class="tag">WebGL</span>
-  <span class="tag">Interactive Motion</span>
-  </div>
-  </div>
-  <div class="glass-card skill-card">
-  <h3><span>⚙️</span> Backend &amp; Edge</h3>
-  <p>Serverless APIs, HTTP header rewriting, multi-engine search routing, and lightweight local servers.</p>
-  <div class="tag-list">
-  <span class="tag">Node.js</span>
-  <span class="tag">Vercel Functions</span>
-  <span class="tag">Python</span>
-  <span class="tag">Proxy Systems</span>
-  <span class="tag">REST APIs</span>
-  <span class="tag">SPA Routing</span>
-  </div>
-  </div>
-  <div class="glass-card skill-card">
-  <h3><span>🚀</span> Game &amp; Dev Tooling</h3>
-  <p>Custom level editors, real-time collision loops, stealth tab launchers, and instant cloud deploys.</p>
-  <div class="tag-list">
-  <span class="tag">Vercel CI/CD</span>
-  <span class="tag">Git &amp; GitHub</span>
-  <span class="tag">2D Game Physics</span>
-  <span class="tag">Level Serialization</span>
-  <span class="tag">DevTools Profiling</span>
-  </div>
-  </div>
-  </div>
+    <span class="eye">// 02. ARSENAL</span>
+    <h2 class="st">Skills &amp; Tech Stack</h2>
+    <div class="grid3">
+      <div class="card"><h3>🎨 Frontend &amp; Creative</h3><p>Responsive glass UI and hardware-accelerated canvas rendering.</p><div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Canvas</span><span class="tag">WebGL</span></div></div>
+      <div class="card"><h3>⚙️ Backend &amp; Edge</h3><p>Serverless APIs, HTTP proxy routing, and header rewriting.</p><div class="tags"><span class="tag">Node.js</span><span class="tag">Vercel Functions</span><span class="tag">Python</span><span class="tag">REST APIs</span></div></div>
+      <div class="card"><h3>🚀 Game &amp; Dev Tooling</h3><p>Custom level editors, real-time physics, and cloud CI/CD.</p><div class="tags"><span class="tag">Vercel CI/CD</span><span class="tag">Git &amp; GitHub</span><span class="tag">2D Physics</span><span class="tag">Level Editors</span></div></div>
+    </div>
   </section>
-  
   <section id="projects">
-  <span class="section-eyebrow">// 03. FEATURED WORK</span>
-  <h2 class="section-title">What I've Built</h2>
-  <p class="section-subtitle">
-  Flagship projects engineered for performance, creativity, and seamless deployment on Vercel.
-  </p>
-  <div class="projects-grid">
-  
-  <article class="glass-card project-card">
-  <div>
-  <div class="project-top">
-  <div class="project-icon" aria-hidden="true">⚡</div>
-  <span class="project-badge">Full-Stack Web Hub</span>
-  </div>
-  <h3>Paradox Web Hub</h3>
-  <p>
-  A full-stack web hub featuring a dark forest spirit-fox UI, built-in Multi-Tab Serverless Proxy Browser, custom Paradox Search engine, and 3,718+ playable HTML5/WebGL games.
-  </p>
-  <ul class="project-highlights">
-  <li>Multi-tab proxy browser powered by Vercel Serverless Functions</li>
-  <li>Built-in search engine &amp; frame-restriction header rewriting</li>
-  <li>Tab cloaking, stealth <code>about:blank</code> launcher &amp; SPA routes</li>
-  </ul>
-  </div>
-  <div class="tag-list">
-  <span class="tag">Node.js</span>
-  <span class="tag">Vercel Serverless</span>
-  <span class="tag">Proxy Engine</span>
-  <span class="tag">3,718+ Games</span>
-  </div>
-  </article>
-  
-  <article class="glass-card project-card">
-  <div>
-  <div class="project-top">
-  <div class="project-icon" aria-hidden="true">🎮</div>
-  <span class="project-badge">Game Engine &amp; Studio</span>
-  </div>
-  <h3>Geometry Dash Level Editor</h3>
-  <p>
-  A standalone browser-based level creation studio and playtest engine with crisp rhythm-platformer physics, grid snapping, obstacle placement, and instant play-loop switching.
-  </p>
-  <ul class="project-highlights">
-  <li>Real-time 60fps HTML5 Canvas physics &amp; collision detection</li>
-  <li>Interactive level grid editor with instant one-click playtesting</li>
-  <li>Zero external dependencies — runs instantaneously in any browser</li>
-  </ul>
-  </div>
-  <div class="tag-list">
-  <span class="tag">HTML5 Canvas</span>
-  <span class="tag">Custom Physics</span>
-  <span class="tag">Level Editor</span>
-  <span class="tag">Vanilla JS</span>
-  </div>
-  </article>
-  </div>
+    <span class="eye">// 03. FEATURED WORK</span>
+    <h2 class="st">What I've Built</h2>
+    <div class="grid2">
+      <article class="card">
+        <div class="phead"><span style="font-size:1.5rem">⚡</span><span class="pbadge">Full-Stack Web Hub</span></div>
+        <h3 style="margin-bottom:8px;font-family:'Space Grotesk',sans-serif;font-size:1.35rem">Paradox Web Hub</h3>
+        <p>Full-stack web hub featuring a spirit-fox UI, built-in Multi-Tab Serverless Proxy Browser, custom Paradox Search, and 3,718+ playable HTML5/WebGL games.</p>
+        <ul class="plist"><li>Multi-tab proxy browser on Vercel Serverless</li><li>Built-in search &amp; frame header rewriting</li><li>Stealth launcher &amp; SPA routing</li></ul>
+        <div class="tags"><span class="tag">Node.js</span><span class="tag">Vercel Serverless</span><span class="tag">3,718+ Games</span></div>
+      </article>
+      <article class="card">
+        <div class="phead"><span style="font-size:1.5rem">🎮</span><span class="pbadge">Game Engine &amp; Studio</span></div>
+        <h3 style="margin-bottom:8px;font-family:'Space Grotesk',sans-serif;font-size:1.35rem">Geometry Dash Level Editor</h3>
+        <p>Standalone browser level creation studio and rhythm-platformer playtest engine with grid snapping, obstacle placement, and instant playtesting.</p>
+        <ul class="plist"><li>Real-time 60fps HTML5 Canvas physics</li><li>Interactive grid editor + 1-click playtest</li><li>Zero external dependencies</li></ul>
+        <div class="tags"><span class="tag">HTML5 Canvas</span><span class="tag">Custom Physics</span><span class="tag">Vanilla JS</span></div>
+      </article>
+    </div>
   </section>
-  
   <section id="connect">
-  <div class="connect-banner">
-  <div>
-  <span class="section-eyebrow">// 04. GET IN TOUCH</span>
-  <h2 class="section-title" style="margin-bottom: 12px;">Let's Build Something Cool</h2>
-  <p style="color: var(--text-secondary); font-size: 1rem; max-width: 500px;">
-  Want to collaborate on a web app, talk serverless architecture, share game dev ideas, or just say hi to <strong>CodeFox</strong>? Reach out anytime on Discord or check out my GitHub!
-  </p>
-  <div class="connect-links">
-  <a href="https://github.com/Code-Eason" target="_blank" rel="noopener noreferrer" class="btn-discord-outline">
-  <span>GitHub (@Code-Eason) ↗</span>
-  </a>
-  </div>
-  </div>
-  <div class="discord-box">
-  <div class="discord-header">
-  <div class="discord-logo" aria-hidden="true">
-  <svg width="26" height="20" viewBox="0 0 127.14 96.36" fill="currentColor">
-  <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
-  </svg>
-  </div>
-  <div class="discord-meta">
-  <small>Discord Username</small>
-  <div class="discord-handle">hypothesiz</div>
-  </div>
-  </div>
-  <div class="discord-actions">
-  <button type="button" class="btn-discord" onclick="copyDiscord()">
-  <span id="copy-btn-label">Copy Username</span>
-  </button>
-  <a href="https://discord.com/app" target="_blank" rel="noopener noreferrer" class="btn-discord-outline">
-  Open Discord ↗
-  </a>
-  </div>
-  </div>
-  </div>
+    <div class="cban">
+      <div>
+        <span class="eye">// 04. GET IN TOUCH</span>
+        <h2 class="st">Let's Build Something Cool</h2>
+        <p style="color:var(--sub);margin-bottom:18px">Want to collaborate on a web app, talk serverless architecture, or say hi to <strong>CodeFox</strong>? Reach out on Discord or GitHub!</p>
+        <a href="https://github.com/Code-Eason" target="_blank" rel="noopener" class="btn-s">GitHub (@Code-Eason) ↗</a>
+      </div>
+      <div class="dbox">
+        <div><small style="font-family:'JetBrains Mono',monospace;color:#a5b4fc">DISCORD USERNAME</small><div class="dhandle">hypothesiz</div></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button type="button" class="dbtn" id="cbtn" onclick="copyDiscord()">Copy Username</button>
+          <a href="https://discord.com/app" target="_blank" rel="noopener" class="btn-s">Open Discord ↗</a>
+        </div>
+      </div>
+    </div>
   </section>
-  </main>
-  <footer>
-  <p>Crafted by <strong>CodeFox</strong> (<code>@hypothesiz</code>) • Deployed on <strong>Vercel</strong></p>
-  </footer>
-  <div id="toast" class="toast" role="status" aria-live="polite">
-  <span style="color: var(--spirit-cyan);">✔</span>
-  <span id="toast-msg">Copied Discord username: <strong>hypothesiz</strong></span>
-  </div>
-  <script>
-  if (window.FOX_DATA) {
-    document.getElementById("nav-fox-icon").src = window.FOX_DATA;
-    document.getElementById("hero-fox-img").src = window.FOX_DATA;
-    document.getElementById("apple-icon").href = window.FOX_DATA;
-    const im = new Image();
-    im.onload = function() {
-      const s = Math.min(im.width, im.height), c = document.createElement("canvas");
-      c.width = 64; c.height = 64;
-      c.getContext("2d").drawImage(im, (im.width - s) / 2, (im.height - s) / 2, s, s, 0, 0, 64, 64);
-      document.getElementById("fav-icon").href = c.toDataURL("image/png");
-    };
-    im.src = window.FOX_DATA;
-  }
-  let toastTimer = null;
-  function copyDiscord() {
-  const handle = "hypothesiz";
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-  navigator.clipboard.writeText(handle).catch(() => fallbackCopy(handle));
-  } else {
-  fallbackCopy(handle);
-  }
-  const btnLabel = document.getElementById("copy-btn-label");
-  if (btnLabel) {
-  btnLabel.textContent = "Copied @hypothesiz!";
-  setTimeout(() => { btnLabel.textContent = "Copy Username"; }, 2200);
-  }
-  const toast = document.getElementById("toast");
-  toast.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("show"), 2800);
-  }
-  function fallbackCopy(text) {
-  const ta = document.createElement("textarea");
-  ta.value = text;
-  ta.style.position = "fixed";
-  ta.style.opacity = "0";
-  document.body.appendChild(ta);
-  ta.select();
-  try { document.execCommand("copy"); } catch (_) {}
-  document.body.removeChild(ta);
-  }
-  const termOutput = document.getElementById("term-output");
-  const termForm = document.getElementById("term-form");
-  const termInput = document.getElementById("term-input");
-  const COMMANDS = {
-  help: () =>
-  "Available commands:\n  whoami    — Who is CodeFox?\n  projects  — View flagship builds\n  skills    — Tech stack & capabilities\n  discord   — Copy & view Discord contact\n  fox       — Summon Blue Spirit CodeFox\n  clear     — Clear terminal history",
-  whoami: () =>
-  "💠 I am CodeFox!\nFull-stack web builder, serverless proxy architect, and HTML5/WebGL creator.",
-  projects: () =>
-  "1. ⚡ Paradox Web Hub — Multi-tab serverless proxy browser + 3,718+ games\n2. 🎮 Geometry Dash Editor — 60fps HTML5 Canvas level studio & physics engine",
-  skills: () =>
-  "Frontend: HTML5, CSS3, Modern JS, Canvas, WebGL\nBackend : Node.js, Vercel Serverless Functions, Python, Proxy Routing",
-  discord: () => {
-  copyDiscord();
-  return "💬 Discord username: hypothesiz (copied to your clipboard!)";
-  },
-  fox: () =>
-  "   /\\   /\\\n  //\\\\_//\\\\     💠 I am CodeFox (Blue Spirit Edition)\n  \\_     _/     Discord: @hypothesiz | GitHub: @Code-Eason\n   / * * \\\n   \\_\\O/_/      Building fast things on Vercel ⚡"
+</main>
+<footer>Crafted by <strong style="color:var(--cyan)">CodeFox</strong> (<code>@hypothesiz</code>) • Deployed on <strong style="color:var(--cyan)">Vercel</strong></footer>
+<div id="toast" class="toast">✔ Copied Discord username: <strong>hypothesiz</strong></div>
+<script src="/fox-data.js"></script>
+<script>
+(function initFox(){
+  const d=window.FOX_DATA;
+  if(!d)return;
+  document.getElementById("nav-fox-icon").src=d;
+  document.getElementById("hero-fox-img").src=d;
+  document.getElementById("apple-icon").href=d;
+  const im=new Image();
+  im.onload=function(){
+    const s=Math.min(im.width,im.height),c=document.createElement("canvas");
+    c.width=64;c.height=64;
+    c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,64,64);
+    document.getElementById("fav-icon").href=c.toDataURL("image/png");
   };
-  function appendLine(text, isCmd = false) {
-  const div = document.createElement("div");
-  div.className = "term-line";
-  if (isCmd) {
-  const promptSpan = document.createElement("span");
-  promptSpan.className = "term-prompt";
-  promptSpan.textContent = "codefox@web:~$ ";
-  const cmdSpan = document.createElement("span");
-  cmdSpan.className = "term-cmd";
-  cmdSpan.textContent = text;
-  div.appendChild(promptSpan);
-  div.appendChild(cmdSpan);
-  } else {
-  div.textContent = text;
-  }
-  termOutput.appendChild(div);
-  termOutput.scrollTop = termOutput.scrollHeight;
-  }
-  function runTermCommand(raw) {
-  const cmd = raw.trim().toLowerCase();
-  if (!cmd) return;
-  if (cmd === "clear") {
-  termOutput.innerHTML = "";
-  return;
-  }
-  appendLine(raw, true);
-  if (COMMANDS[cmd]) {
-  appendLine(COMMANDS[cmd]());
-  } else {
-  appendLine(`Command not found: '${raw}'. Type 'help' for available commands.`);
-  }
-  }
-  termForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const val = termInput.value;
-  termInput.value = "";
-  runTermCommand(val);
-  });
-  const foxCard = document.getElementById("fox-card");
-  if (foxCard && window.matchMedia("(pointer: fine)").matches) {
-  foxCard.addEventListener("mousemove", (e) => {
-  const rect = foxCard.getBoundingClientRect();
-  const x = (e.clientX - rect.left) / rect.width - 0.5;
-  const y = (e.clientY - rect.top) / rect.height - 0.5;
-  foxCard.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
-  });
-  foxCard.addEventListener("mouseleave", () => {
-  foxCard.style.transform = "perspective(900px) rotateY(0deg) rotateX(0deg)";
-  });
-  }
-  const canvas = document.getElementById("ember-canvas");
-  const ctx = canvas.getContext("2d");
-  let particles = [];
-  function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  }
-  window.addEventListener("resize", resizeCanvas);
-  resizeCanvas();
-  const count = Math.min(48, Math.floor(window.innerWidth / 28));
-  for (let i = 0; i < count; i++) {
-  particles.push({
-  x: Math.random() * canvas.width,
-  y: Math.random() * canvas.height,
-  r: Math.random() * 2.1 + 0.6,
-  vx: (Math.random() - 0.5) * 0.28,
-  vy: -Math.random() * 0.42 - 0.12,
-  alpha: Math.random() * 0.65 + 0.18,
-  ice: Math.random() > 0.65
-  });
-  }
-  function drawParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (const p of particles) {
-  p.x += p.vx;
-  p.y += p.vy;
-  if (p.y < -10) {
-  p.y = canvas.height + 10;
-  p.x = Math.random() * canvas.width;
-  }
-  if (p.x < -10) p.x = canvas.width + 10;
-  if (p.x > canvas.width + 10) p.x = -10;
-  ctx.beginPath();
-  ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-  ctx.fillStyle = p.ice
-  ? `rgba(186, 230, 253, ${p.alpha})`
-  : `rgba(0, 229, 255, ${p.alpha})`;
-  ctx.fill();
-  }
-  requestAnimationFrame(drawParticles);
-  }
-  drawParticles();
-  </script>
+  im.src=d;
+})();
+let tmr=null;
+function copyDiscord(){
+  if(navigator.clipboard)navigator.clipboard.writeText("hypothesiz").catch(()=>{});
+  const b=document.getElementById("cbtn");if(b){b.textContent="Copied @hypothesiz!";setTimeout(()=>b.textContent="Copy Username",2200);}
+  const t=document.getElementById("toast");t.classList.add("show");clearTimeout(tmr);tmr=setTimeout(()=>t.classList.remove("show"),2600);
+}
+const out=document.getElementById("term-output"),inp=document.getElementById("term-input");
+const CMDS={
+  help:()=>"Commands: whoami, projects, skills, discord, fox, clear",
+  whoami:()=>"💠 I am CodeFox! Full-stack builder, serverless proxy architect & WebGL creator.",
+  projects:()=>"1. ⚡ Paradox Web Hub (3,718+ games + proxy browser)\n2. 🎮 Geometry Dash Level Editor",
+  skills:()=>"Frontend: HTML5, CSS3, JS, Canvas, WebGL | Backend: Node.js, Vercel Functions, Python",
+  discord:()=>{copyDiscord();return "💬 Discord: hypothesiz (copied!)";},
+  fox:()=>"  /\\  /\\\n //\\_//\\   💠 I am CodeFox\n \\_    _/   Discord: @hypothesiz\n  / * * \\\n  \\_\\O/_/"
+};
+function addL(txt,cmd){
+  const d=document.createElement("div");d.className="tl";
+  d.textContent=cmd?"codefox@web:~$ "+txt:txt;
+  out.appendChild(d);out.scrollTop=out.scrollHeight;
+}
+function runCmd(raw){
+  const c=raw.trim().toLowerCase();if(!c)return;
+  if(c==="clear"){out.innerHTML="";return;}
+  addL(raw,true);addL(CMDS[c]?CMDS[c]():"Unknown command. Type help.");
+}
+document.getElementById("term-form").addEventListener("submit",e=>{e.preventDefault();runCmd(inp.value);inp.value="";});
+const cv=document.getElementById("ember-canvas"),cx=cv.getContext("2d");
+function rs(){cv.width=innerWidth;cv.height=innerHeight;}addEventListener("resize",rs);rs();
+const pts=Array.from({length:40},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*2+.6,vx:(Math.random()-.5)*.28,vy:-Math.random()*.4-.12,a:Math.random()*.6+.2}));
+(function draw(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.y<-10)p.y=cv.height+10;cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.28);cx.fillStyle="rgba(0,229,255,"+p.a+")";cx.fill();}
+  requestAnimationFrame(draw);
+})();
+</script>
 </body>
 </html>
